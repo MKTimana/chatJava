@@ -6,12 +6,13 @@ public class Cliente {
         try {
 
             // Declaracao do Socket Cliente
-            Socket cliente = new Socket("127.0.0.1", 7000);
+            Socket cliente = new Socket("172.20.10.3", 7000);
             System.out.println("Cliente Inicado");
             // Fluxo de dados para enviar
             PrintStream ps = new PrintStream(cliente.getOutputStream());
             ps.println("Conectado por Milton!");
 
+            
             cliente.close();
             System.out.println("Cliente Finalizado");
         } catch (Exception e) {

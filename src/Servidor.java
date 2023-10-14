@@ -18,6 +18,7 @@ public class Servidor {
                 BufferedReader dado = new BufferedReader(fluxoDados);
                 System.out.println(dado.readLine());
 
+                Thread.sleep(7000);
                 cliente.close();
             }
         } catch (Exception e) {
