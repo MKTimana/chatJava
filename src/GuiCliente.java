@@ -102,7 +102,7 @@ public class GuiCliente extends JFrame implements ActionListener {
             try {
                 String msgOut = "";
                 msgOut = txtMsg.getText().trim();
-                txA.setText(txA.getText().trim() + "\nEu:\t" + msgOut);
+                txA.setText(txA.getText().trim() + "\nMe:\t" + msgOut);
                 dout.writeUTF(msgOut);// enviando a msg
                 txtMsg.setText("");
             } catch (Exception err) {
@@ -128,7 +128,7 @@ public class GuiCliente extends JFrame implements ActionListener {
 
             while (!msgIn.equals("exit")) {
                 msgIn = din.readUTF();
-                txA.setText(txA.getText().trim() + "\n Server:\t" + msgIn);
+                txA.setText(txA.getText().trim() + "\nDELL MK:\t" + msgIn);
             }
         } catch (Exception e) {
 
