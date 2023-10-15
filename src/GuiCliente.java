@@ -111,7 +111,7 @@ public class GuiCliente extends JFrame implements ActionListener {
         } else if (e.getSource() == btnHello) {
             txtMsg.setText("Hello");
         } else if (e.getSource() == btnOk) {
-            txtMsg.setText("OK!");
+            txtMsg.setText("OK");
         } else if (e.getSource() == btnUnderstood) {
             txtMsg.setText("Understood");
         }
