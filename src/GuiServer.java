@@ -76,8 +76,9 @@ public class GuiServer extends JFrame implements ActionListener {
         txtMsg = new JTextField(20);
 
         btnSend = new JButton(imgSend);
-        btnSend.setOpaque(false);
-        btnSend.setBorderPainted(false);
+        btnSend.setBackground(c);
+        // btnSend.setOpaque(false);
+        // btnSend.setBorderPainted(false);
 
         btnSend.addActionListener(this);
 
@@ -103,7 +104,7 @@ public class GuiServer extends JFrame implements ActionListener {
             try {
                 String msgOut = "";
                 msgOut = txtMsg.getText().trim();
-                txA.setText(txA.getText().trim() + " \nEu: \t" + msgOut);
+                txA.setText(txA.getText().trim() + "\nMe:\t" + msgOut);
                 dout.writeUTF(msgOut);// enviando a msg
                 txtMsg.setText("");
             } catch (Exception err) {
@@ -132,7 +133,7 @@ public class GuiServer extends JFrame implements ActionListener {
 
             while (!msgIn.equals("exit")) {
                 msgIn = din.readUTF();
-                txA.setText(txA.getText().trim() + "\nClient:\t" + msgIn); // aqui vai apresentar o texto enviado...
+                txA.setText(txA.getText().trim() + "\nMac MK:\t" + msgIn); // aqui vai apresentar o texto enviado...
                                                                            // pelo cliente
             }
         } catch (Exception e) {
