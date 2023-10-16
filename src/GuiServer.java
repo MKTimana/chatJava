@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 
 public class GuiServer extends JFrame implements ActionListener {
     private JScrollPane scrText;
@@ -22,6 +25,10 @@ public class GuiServer extends JFrame implements ActionListener {
     private JButton btnUnderstood;
     private JLabel lblAnswers;
     private JLabel lblPowered;
+
+    // private static LocalTime currentTime = LocalTime.now();
+    private static String currentTime = new SimpleDateFormat("HH:mm").format(new Date());
+    
 
     static ServerSocket ss;
     static Socket s;
@@ -102,9 +109,10 @@ public class GuiServer extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnSend) {
             try {
+                
                 String msgOut = "";
                 msgOut = txtMsg.getText().trim();
-                txA.setText(txA.getText().trim() + "\nMe:\t" + msgOut);
+                txA.setText(txA.getText().trim() + "\nMe:\t" + msgOut+". Enviado às "+currentTime);
                 dout.writeUTF(msgOut);// enviando a msg
                 txtMsg.setText("");
             } catch (Exception err) {
@@ -133,7 +141,7 @@ public class GuiServer extends JFrame implements ActionListener {
 
             while (!msgIn.equals("exit")) {
                 msgIn = din.readUTF();
-                txA.setText(txA.getText().trim() + "\nMac MK:\t" + msgIn); // aqui vai apresentar o texto enviado...
+                txA.setText(txA.getText().trim() + "\nMac MK:\t" + msgIn+". Recebido às "+currentTime); // aqui vai apresentar o texto enviado...
                                                                            // pelo cliente
             }
         } catch (Exception e) {

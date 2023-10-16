@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class GuiCliente extends JFrame implements ActionListener {
     static Socket s;
@@ -26,6 +28,8 @@ public class GuiCliente extends JFrame implements ActionListener {
     private JButton btnUnderstood;
     private JLabel lblAnswers;
     private JLabel lblPowered;
+
+    private static String currentTime = new SimpleDateFormat("HH:mm").format(new Date());
 
     Color c = new Color(54, 75, 110);
 
@@ -102,7 +106,7 @@ public class GuiCliente extends JFrame implements ActionListener {
             try {
                 String msgOut = "";
                 msgOut = txtMsg.getText().trim();
-                txA.setText(txA.getText().trim() + "\nMe:\t" + msgOut);
+                txA.setText(txA.getText().trim() + "\nMe:\t" + msgOut+". Enviado às "+currentTime);
                 dout.writeUTF(msgOut);// enviando a msg
                 txtMsg.setText("");
             } catch (Exception err) {
@@ -128,7 +132,7 @@ public class GuiCliente extends JFrame implements ActionListener {
 
             while (!msgIn.equals("exit")) {
                 msgIn = din.readUTF();
-                txA.setText(txA.getText().trim() + "\nDELL MK:\t" + msgIn);
+                txA.setText(txA.getText().trim() + "\nDELL MK:\t" + msgIn+". Recebido às "+currentTime);
             }
         } catch (Exception e) {
 
